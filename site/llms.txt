@@ -1,0 +1,16 @@
+# Operations Demand Planner
+
+A portfolio project by Utsav Patel demonstrating an end-to-end operations analytics workflow.
+
+## Main pages
+- Overview: https://utsav7123.github.io/operations-demand-planner/
+- Demand planning: https://utsav7123.github.io/operations-demand-planner/demand-planning/
+- Methodology: https://utsav7123.github.io/operations-demand-planner/methodology/
+- Data notes: https://utsav7123.github.io/operations-demand-planner/data-notes/
+- Source code: https://github.com/utsav7123/operations-demand-planner
+
+## What the project does
+The Python pipeline validates synthetic operational data, calculates completion, SLA, quality, productivity, and backlog metrics, flags unusual demand, forecasts 14 days of incoming requests, and estimates staffing requirements from recent productivity.
+
+## Data note
+All operational data in the public demo is synthetic and reproducible. It is not Nokia data and is not presented as real company data.
