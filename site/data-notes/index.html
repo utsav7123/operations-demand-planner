@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Notes and Limitations | Operations Demand Planner</title>
+  <meta name="description" content="Data provenance, assumptions, limitations, and interpretation notes for the Operations Demand Planner sample dataset and forecasts.">
+  <link rel="canonical" href="https://utsav7123.github.io/operations-demand-planner/data-notes/">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/styles.css">
+  <meta property="og:type" content="article"><meta property="og:title" content="Operations Demand Planner Data Notes"><meta property="og:description" content="What the sample data represents, what it does not represent, and how to interpret the forecast."><meta property="og:url" content="https://utsav7123.github.io/operations-demand-planner/data-notes/"><meta property="og:image" content="https://utsav7123.github.io/operations-demand-planner/assets/social-card.svg"><meta property="og:image:type" content="image/svg+xml"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Overview","item":"https://utsav7123.github.io/operations-demand-planner/"},{"@type":"ListItem","position":2,"name":"Data notes","item":"https://utsav7123.github.io/operations-demand-planner/data-notes/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true">OD</span><span>Operations Demand Planner</span></a><nav class="site-nav" aria-label="Primary navigation"><a href="../">Overview</a><a href="../demand-planning/">Demand planning</a><a href="../methodology/">Methodology</a><a href="./" aria-current="page">Data notes</a></nav></div></header>
+  <main id="main"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../">Overview</a> / Data notes</nav><article class="article"><p class="eyebrow">Provenance and limits</p><h1>Data notes and limitations</h1><p class="lede">The dataset is synthetic. It is useful for demonstrating an analytics workflow without exposing any customer, employee, or company information.</p>
+    <h2>What the sample represents</h2><p>The generator creates daily request volumes for four regions and three user profiles from January through September 2026. It includes weekday effects, a repeating demand wave, gradual growth, random noise, occasional spikes, staffing variation, backlog, SLA performance, quality errors, overtime, and average resolution time.</p>
+    <h2>What it does not represent</h2><p>The numbers are not Nokia data and are not estimates of Nokia operations. They do not represent a real support organization, customer base, staffing plan, or business forecast.</p>
+    <h2>Forecast interpretation</h2><p>The 14-day forecast is a baseline for planning exercises. It does not include holidays, promotions, outages, product releases, weather, business calendars, or external demand drivers. Those would be reasonable additions for a real deployment.</p>
+    <h2>Staffing interpretation</h2><p>The staffing calculation assumes that recent productivity is a useful short-term baseline and that planning for 85 percent utilization leaves room for normal variation. A real staffing model would also account for skills, schedules, shrinkage, queue priorities, training, and service-level targets.</p>
+    <h2>Why keep the sample reproducible?</h2><p>The random generator uses a fixed seed. That means the analysis can be rerun and reviewed without the underlying dataset changing unexpectedly. It also makes automated tests meaningful.</p>
+  </article></main>
+  <footer class="site-footer"><div class="inner"><div>Synthetic data keeps the project safe to share while preserving the shape of a real analytics workflow.</div><div class="footer-links"><a href="../">Overview</a><a href="../methodology/">Methodology</a><a href="https://github.com/utsav7123/operations-demand-planner">Source code</a></div></div></footer>
+</body>
+</html>
