@@ -30,6 +30,7 @@ I kept the forecasting model simple on purpose. For staffing decisions, I would 
 5. It flags unusual demand spikes and writes clean reporting tables to `outputs/`.
 6. `powerbi/measures.dax` contains the measures I would use in the dashboard.
 7. `sql/analysis.sql` shows the same type of analysis from a SQL point of view.
+8. `src/build_dashboard_data.py` prepares the compact JSON used by the website.
 
 ## Metrics in the project
 
@@ -51,17 +52,29 @@ I kept the forecasting model simple on purpose. For staffing decisions, I would 
 python -m pip install -r requirements.txt
 python src/generate_sample_data.py
 python src/pipeline.py
+python src/build_dashboard_data.py
 ```
 
 Then run the tests:
 
 ```bash
-pytest
+pytest -q
 ```
+
+## Live dashboard
+
+The web dashboard is published from the same generated analytics outputs used by the Python pipeline:
+
+- Dashboard: https://utsav7123.github.io/operations-demand-planner/
+- Demand planning: https://utsav7123.github.io/operations-demand-planner/demand-planning/
+- Methodology: https://utsav7123.github.io/operations-demand-planner/methodology/
+- Data notes: https://utsav7123.github.io/operations-demand-planner/data-notes/
+
+The site is plain HTML, CSS, and JavaScript with no front-end framework or chart library. The JavaScript is intentionally small and the charts are rendered as accessible SVG.
 
 ## Power BI dashboard idea
 
-I would build four pages from the output files:
+The same outputs can be loaded into Power BI for a desktop BI version of the project.
 
 1. **Operations Overview**
    - Incoming vs completed requests
