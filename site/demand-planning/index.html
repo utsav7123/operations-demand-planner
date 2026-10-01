@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demand Planning and Staffing Forecast | Operations Demand Planner</title>
+  <meta name="description" content="A 14-day operational demand forecast with explainable staffing estimates by region, built from recent productivity and an 85 percent utilization target.">
+  <link rel="canonical" href="https://utsav7123.github.io/operations-demand-planner/demand-planning/">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/styles.css">
+  <meta property="og:type" content="website"><meta property="og:title" content="Demand Planning and Staffing Forecast"><meta property="og:description" content="A 14-day demand and staffing view built from a reproducible operations dataset."><meta property="og:url" content="https://utsav7123.github.io/operations-demand-planner/demand-planning/"><meta property="og:image" content="https://utsav7123.github.io/operations-demand-planner/assets/social-card.svg"><meta property="og:image:type" content="image/svg+xml"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Overview","item":"https://utsav7123.github.io/operations-demand-planner/"},{"@type":"ListItem","position":2,"name":"Demand planning","item":"https://utsav7123.github.io/operations-demand-planner/demand-planning/"}]}</script>
+  <script src="../assets/demand.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true">OD</span><span>Operations Demand Planner</span></a><nav class="site-nav" aria-label="Primary navigation"><a href="../">Overview</a><a href="./" aria-current="page">Demand planning</a><a href="../methodology/">Methodology</a><a href="../data-notes/">Data notes</a></nav></div></header>
+  <main id="main">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../">Overview</a> / Demand planning</nav>
+    <div class="article"><p class="eyebrow">Forecast and capacity</p><h1>Turn the demand forecast into a staffing decision.</h1><p class="lede">The model forecasts request volume for each region and user profile, then converts that demand into required staff using recent team productivity and an 85 percent utilization target.</p></div>
+    <div id="page-status" class="dashboard-status" role="status" aria-live="polite">Loading forecast data...</div>
+    <section class="metric-grid" aria-label="Forecast summary"><article class="metric"><div class="metric-label">14-day forecast volume</div><div class="metric-value" id="forecast-total">...</div><div class="metric-note">All regions and profiles</div></article><article class="metric"><div class="metric-label">Net staffing gap</div><div class="metric-value" id="gap-total">...</div><div class="metric-note">Required minus typical available staff, summed across forecast rows</div></article></section>
+    <section class="section" aria-labelledby="forecast-heading"><div class="section-heading"><div><p class="eyebrow">Demand curve</p><h2 id="forecast-heading">Next 14 days</h2></div><p>The baseline model includes a time trend and weekly seasonality. It is simple enough to explain and strong enough to compare against more advanced models later.</p></div><article class="panel"><div id="forecast-chart" class="chart"></div></article></section>
+    <section class="section" aria-labelledby="staff-heading"><div class="section-heading"><div><p class="eyebrow">Resource planning</p><h2 id="staff-heading">Regional staffing picture</h2></div><p>A positive gap means the baseline estimate calls for more staff than the recent typical availability.</p></div><article class="panel"><div class="table-wrap"><table><thead><tr><th>Region</th><th>Forecast requests</th><th>Required staff</th><th>Typical staff</th><th>Gap</th><th>Status</th></tr></thead><tbody id="staffing-body"></tbody></table></div></article></section>
+  </main>
+  <footer class="site-footer"><div class="inner"><div>Forecasting is a planning aid, not a promise. Assumptions are documented in the methodology.</div><div class="footer-links"><a href="../methodology/">Methodology</a><a href="../data-notes/">Data notes</a><a href="https://github.com/utsav7123/operations-demand-planner">Source code</a></div></div></footer>
+</body>
+</html>
