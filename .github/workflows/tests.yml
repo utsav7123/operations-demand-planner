@@ -10,15 +10,21 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Build sample data and dashboard payload
+        run: |
+          python src/generate_sample_data.py
+          python src/pipeline.py
+          python src/build_dashboard_data.py
 
       - name: Run tests
         run: pytest -q
