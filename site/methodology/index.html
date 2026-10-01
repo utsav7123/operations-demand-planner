@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Methodology | Operations Demand Planner</title>
+  <meta name="description" content="How the Operations Demand Planner validates data, calculates KPIs, detects demand spikes, forecasts demand, and estimates staffing requirements.">
+  <link rel="canonical" href="https://utsav7123.github.io/operations-demand-planner/methodology/">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/styles.css">
+  <meta property="og:type" content="article"><meta property="og:title" content="Operations Demand Planner Methodology"><meta property="og:description" content="The data validation, KPI, anomaly, forecast, and staffing logic behind the dashboard."><meta property="og:url" content="https://utsav7123.github.io/operations-demand-planner/methodology/"><meta property="og:image" content="https://utsav7123.github.io/operations-demand-planner/assets/social-card.svg"><meta property="og:image:type" content="image/svg+xml"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Overview","item":"https://utsav7123.github.io/operations-demand-planner/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://utsav7123.github.io/operations-demand-planner/methodology/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true">OD</span><span>Operations Demand Planner</span></a><nav class="site-nav" aria-label="Primary navigation"><a href="../">Overview</a><a href="../demand-planning/">Demand planning</a><a href="./" aria-current="page">Methodology</a><a href="../data-notes/">Data notes</a></nav></div></header>
+  <main id="main"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../">Overview</a> / Methodology</nav><article class="article"><p class="eyebrow">How it works</p><h1>Methodology</h1><p class="lede">The project is intentionally small enough to audit. The data pipeline and dashboard use the same definitions so the numbers shown on the site can be traced back to code.</p>
+    <h2>1. Data checks</h2><p>The loader requires the operational columns used by the analysis, converts the date field, rejects missing or negative numeric values, and checks that the count of requests completed within SLA never exceeds total completed requests.</p>
+    <h2>2. Performance metrics</h2><p>Completion rate is completed requests divided by incoming requests. SLA attainment is requests completed within SLA divided by completed requests. Quality rate is one minus quality errors divided by completed requests. Productivity is completed requests divided by available staff.</p>
+    <h2>3. Demand spike detection</h2><p>For each region and user profile, the pipeline compares incoming demand with a rolling 28-day mean and standard deviation. A day is flagged when its absolute z-score is at least 2.5. The rule is transparent and easy to inspect.</p>
+    <h2>4. Forecast</h2><p>The baseline model is a linear regression with a time trend plus sine and cosine features for weekly seasonality. The forecast is clipped at zero because negative request volume does not make operational sense.</p>
+    <div class="callout"><strong>Why a simple model?</strong><br>The goal is not to claim that linear regression is the best possible forecasting method. It gives a baseline that can be explained, challenged, and compared with stronger models later.</div>
+    <h2>5. Staffing estimate</h2><p>Recent productivity is calculated from the latest 28 days of completed requests and available staff. Forecast demand is divided by that productivity rate and an 85 percent utilization target, then rounded up to produce required staff. The staffing gap is required staff minus recent typical available staff.</p>
+    <h2>6. Reporting layer</h2><p>The pipeline writes daily metrics, regional summaries, anomaly rows, staffing forecasts, and a combined actual/forecast timeline. Those files can feed Excel or Power BI, while the web dashboard uses a smaller JSON summary generated from the same outputs.</p>
+    <h2>Reproduce it</h2><pre><code>python -m pip install -r requirements.txt
+python src/generate_sample_data.py
+python src/pipeline.py
+python src/build_dashboard_data.py
+pytest -q</code></pre>
+  </article></main>
+  <footer class="site-footer"><div class="inner"><div>Every number on the dashboard comes from code in the repository.</div><div class="footer-links"><a href="../">Overview</a><a href="../data-notes/">Data notes</a><a href="https://github.com/utsav7123/operations-demand-planner">Source code</a></div></div></footer>
+</body>
+</html>
