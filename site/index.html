@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operations Demand Planner | Operations Analytics Dashboard</title>
+  <meta name="description" content="A reproducible operations analytics dashboard for service demand, SLA performance, backlog, forecasting, and staffing planning.">
+  <link rel="canonical" href="https://utsav7123.github.io/operations-demand-planner/">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Operations Demand Planner">
+  <meta property="og:description" content="Demand forecasting, operational KPIs, and staffing analysis built from a reproducible Python pipeline.">
+  <meta property="og:url" content="https://utsav7123.github.io/operations-demand-planner/">
+  <meta property="og:image" content="https://utsav7123.github.io/operations-demand-planner/assets/social-card.svg">
+  <meta property="og:image:type" content="image/svg+xml"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Operations Demand Planner">
+  <meta name="twitter:description" content="A reproducible operations analytics dashboard for demand, service levels, backlog, and staffing.">
+  <meta name="twitter:image" content="https://utsav7123.github.io/operations-demand-planner/assets/social-card.svg">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Operations Demand Planner","description":"A reproducible operations analytics project for demand forecasting, staffing analysis, service levels, and reporting.","codeRepository":"https://github.com/utsav7123/operations-demand-planner","programmingLanguage":["Python","SQL","JavaScript"],"author":{"@type":"Person","name":"Utsav Patel"},"url":"https://utsav7123.github.io/operations-demand-planner/"}
+  </script>
+  <script src="./assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to dashboard</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./" aria-label="Operations Demand Planner home"><span class="brand-mark" aria-hidden="true">OD</span><span>Operations Demand Planner</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="./" aria-current="page">Overview</a>
+        <a href="./demand-planning/">Demand planning</a>
+        <a href="./methodology/">Methodology</a>
+        <a href="./data-notes/">Data notes</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <p class="eyebrow">Operations analytics</p>
+    <h1>See demand, service pressure, and staffing needs before they become separate problems.</h1>
+    <p class="lede">This dashboard is the presentation layer for a small analytics pipeline I built in Python. It validates operational data, tracks service performance, flags unusual demand, forecasts the next 14 days, and turns the forecast into a staffing estimate.</p>
+    <div class="hero-meta"><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">Power BI ready</span><span class="pill">Excel ready</span><span class="pill">scikit-learn</span></div>
+    <div id="dashboard-status" class="dashboard-status" role="status" aria-live="polite">Loading dashboard data...</div>
+    <section class="metric-grid" aria-label="Key performance indicators">
+      <article class="metric"><div class="metric-label">Incoming requests</div><div class="metric-value" id="metric-incoming">...</div><div class="metric-note">Full generated history</div></article>
+      <article class="metric"><div class="metric-label">Completion rate</div><div class="metric-value" id="metric-completion">...</div><div class="metric-note">Completed / incoming</div></article>
+      <article class="metric"><div class="metric-label">SLA attainment</div><div class="metric-value" id="metric-sla">...</div><div class="metric-note">Completed within SLA</div></article>
+      <article class="metric"><div class="metric-label">Current backlog</div><div class="metric-value" id="metric-backlog">...</div><div class="metric-note">As of <span id="data-through">...</span></div></article>
+    </section>
+    <section class="section" aria-labelledby="volume-heading">
+      <div class="section-heading"><div><p class="eyebrow">Recent movement</p><h2 id="volume-heading">Workload and throughput</h2></div><p>Incoming and completed request volume over the last 90 days. The gap between the lines is an early signal of backlog pressure.</p></div>
+      <div class="panel-grid">
+        <article class="panel"><div class="panel-header"><div><h3>Daily request volume</h3><div class="panel-kicker">90-day view</div></div><div class="chart-legend" aria-hidden="true"><span class="legend-item"><span class="legend-dot"></span>Incoming</span><span class="legend-item"><span class="legend-dot secondary"></span>Completed</span></div></div><div id="volume-chart" class="chart"></div></article>
+        <aside class="panel" aria-labelledby="insight-heading"><div class="panel-header"><div><h3 id="insight-heading">What stands out</h3><div class="panel-kicker">Generated from the current run</div></div></div><ul id="insight-list" class="insight-list"><li><span>Loading observations...</span></li></ul></aside>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="service-heading">
+      <div class="section-heading"><div><p class="eyebrow">Reliability</p><h2 id="service-heading">Service level and quality</h2></div><p>Service level and quality are shown together because improving throughput is not useful if it creates more errors.</p></div>
+      <article class="panel"><div class="panel-header"><div><h3>SLA and quality rate</h3><div class="panel-kicker">Daily, last 90 days</div></div><div class="chart-legend" aria-hidden="true"><span class="legend-item"><span class="legend-dot"></span>SLA</span><span class="legend-item"><span class="legend-dot secondary"></span>Quality</span></div></div><div id="service-chart" class="chart"></div></article>
+    </section>
+    <section class="section" aria-labelledby="region-heading">
+      <div class="section-heading"><div><p class="eyebrow">Regional view</p><h2 id="region-heading">Demand and operating performance by region</h2></div><p>The table keeps the underlying values visible instead of forcing every question into a chart.</p></div>
+      <div class="panel-grid equal">
+        <article class="panel"><div class="panel-header"><div><h3>Total demand</h3><div class="panel-kicker">Incoming requests by region</div></div></div><div id="regional-chart" class="chart"></div></article>
+        <article class="panel"><div class="table-wrap"><table><thead><tr><th>Region</th><th>Incoming</th><th>Completion</th><th>SLA</th><th>Quality</th><th>Avg. hours</th></tr></thead><tbody id="region-table-body"></tbody></table></div></article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="inner"><div>Built from reproducible synthetic operations data. No production customer data is used.</div><div class="footer-links"><a href="https://github.com/utsav7123/operations-demand-planner">Source code</a><a href="./methodology/">Methodology</a><a href="./data-notes/">Data notes</a></div></div></footer>
+</body>
+</html>
