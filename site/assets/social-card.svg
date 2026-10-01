@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f5f6f7"/>
+  <rect x="72" y="64" width="1056" height="502" rx="28" fill="#ffffff" stroke="#dfe4e8" stroke-width="2"/>
+  <rect x="112" y="110" width="56" height="56" rx="13" fill="#17202a"/>
+  <path d="M124 150v-12h8v12zm12 0v-22h8v22zm12 0v-32h8v32z" fill="#e4f0f2"/>
+  <text x="190" y="150" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#17202a">Operations Demand Planner</text>
+  <text x="112" y="260" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="800" fill="#17202a">Demand, service levels,</text>
+  <text x="112" y="338" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="800" fill="#17202a">and staffing in one view.</text>
+  <text x="112" y="418" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#5d6875">Python · SQL · Power BI · Forecasting · Operations Analytics</text>
+  <line x1="112" y1="482" x2="1088" y2="482" stroke="#dfe4e8" stroke-width="2"/>
+  <text x="112" y="526" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#0f5f73">utsav7123 / operations-demand-planner</text>
+</svg>
