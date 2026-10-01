@@ -1,0 +1,48 @@
+-- Table name: DailyMetrics
+
+Total Incoming Requests =
+SUM(DailyMetrics[incoming_requests])
+
+Total Completed Requests =
+SUM(DailyMetrics[completed_requests])
+
+Completion Rate =
+DIVIDE([Total Completed Requests], [Total Incoming Requests])
+
+SLA Attainment =
+DIVIDE(
+    SUM(DailyMetrics[within_sla]),
+    [Total Completed Requests]
+)
+
+Quality Rate =
+1 - DIVIDE(
+    SUM(DailyMetrics[quality_errors]),
+    [Total Completed Requests]
+)
+
+Average Backlog =
+AVERAGE(DailyMetrics[backlog_end])
+
+Requests Per Staff =
+DIVIDE(
+    [Total Completed Requests],
+    SUM(DailyMetrics[staff_available])
+)
+
+Demand Spikes =
+CALCULATE(
+    COUNTROWS(DailyMetrics),
+    DailyMetrics[demand_spike] = TRUE()
+)
+
+-- Table name: StaffingForecast
+
+Forecast Requests =
+SUM(StaffingForecast[forecast_requests])
+
+Required Staff =
+SUM(StaffingForecast[required_staff])
+
+Expected Staffing Gap =
+SUM(StaffingForecast[staffing_gap])
